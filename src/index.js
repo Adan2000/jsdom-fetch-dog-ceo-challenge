@@ -6,7 +6,8 @@ const breedUrl = 'https://dog.ceo/api/breeds/list/all'
 fetchAllDogsImage()
 fetchAllDogBreeds()
 
-//data
+////data
+
 
 function fetchAllDogsImage(){
     fetch(imgUrl)
@@ -30,7 +31,7 @@ function fetchAllDogBreeds(){
     .then(res => res.json())
     .then(breeds => {
         allDogs = Object.keys(breeds.message)
-        allDogs.forEach(dog => renderDogBreeds(dog) )
+        allDogs.forEach(dog => buildDogBreeds(dog) )
     })
 }
 //object.keys(obj) gives us an array of all the keys that 
@@ -42,6 +43,7 @@ function fetchAllDogBreeds(){
 //we then call our variable that we just created, 
 //and get each dog breed using 'forEach' and we pass 
 //in a dog into our buildDogBreeds function 
+//challenge 2 complete.
 
 
 
@@ -51,9 +53,8 @@ function fetchAllDogBreeds(){
 
 
 
+////DOM
 
-
-//DOM
 function BuildDogImages(dog){
     let dogImgContainer = document.querySelector('#dog-image-container')
     let img = document.createElement('img')
@@ -74,14 +75,16 @@ function BuildDogImages(dog){
 //that conatiner in our html 
 //Challenge 1 complete.
 
-function renderDogBreeds(dog){
+function buildDogBreeds(dog){
     console.log(dog)
-    let dogUl = document.querySelector('.dog-breeds')
+    let dogUl = document.querySelector('#dog-breeds')
     let li = document.createElement('li')
     li.textContent = dog
-    li.id = dog 
     dogUl.appendChild(li)
 }
+//class is always a .
+//id is always a # 
+
 //we then grab the class from the html using a query selector.
 //where we want to display our breeds
 //to grab a class we use a . 
@@ -93,4 +96,7 @@ function renderDogBreeds(dog){
 //to add our dog breed  information to it
 //after that we append that li with the dog breed info 
 //to our class called 'dog-breeds'
+//challenge 2 complete.
+
+
 
