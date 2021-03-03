@@ -6,24 +6,22 @@ const breedUrl = 'https://dog.ceo/api/breeds/list/all'
 fetchAllDogsImage()
 fetchAllDogBreeds()
 
-////data
 
+////DATA
 
 function fetchAllDogsImage(){
     fetch(imgUrl)
     .then(res => res.json())
     .then(dogs => dogs.message.forEach(dog => BuildDogImages(dog)))
 }
-//note. the .message looks at the console where it says 
-//{message: (4)}
-//note. we then get that json data..
-//set a name of 'dogs' that is basically data, then we look at
-//that data and into the message. then we iterate over that using
-//the.foreach and then now that we have that we get a dog and we 
-//pass it into the next function that builds the dogs, called 
-//buildDogimages, and we pass in that dog as a argument.
-//the 'dog' is basically the data we iterated through, can be any name.
-//challenge 1 complete.
+//the ImgUrl is the link made into a constant, so we passed that into our fetch function.
+//we got that response back and turned it into json data
+//we then iterated over the data messages and pass in dog to another function that builds the dog images.
+
+
+
+
+
 
 
 function fetchAllDogBreeds(){
@@ -34,19 +32,11 @@ function fetchAllDogBreeds(){
         allDogs.forEach(dog => buildDogBreeds(dog) )
     })
 }
-//object.keys(obj) gives us an array of all the keys that 
-//was in that array
-//or object.values() that gets the values
-//these are way to iterate over a array. 
-//we then set allDogs as a variable equal to our dog breed iterator
-//that returns all of our keys as the name implies Object.keys
-//we then call our variable that we just created, 
-//and get each dog breed using 'forEach' and we pass 
-//in a dog into our buildDogBreeds function 
-//challenge 2 complete.
-
-
-
+//fetching the breedUrl that only has the breeds
+//turn that data into json data
+//we use the Object.keys to return an array of an object's own enurable property names,
+//in this case we pass in the breeds message and return an array of the breed. message
+//we then iterate over that array using the .forEach method and pass in that breed into a function that builds that dog breeds
 
 
 
@@ -62,41 +52,24 @@ function BuildDogImages(dog){
     img.style.width = '200px'
     dogImgContainer.appendChild(img)
 }
+//here we select the dog image container from the html, where the dog image will go.
+//we then create a img element, and after we set that image source tp the dog we passed in 
+//we set the width to a standared 200px
+//we then added that img to the container we selected.
 
-//in this one we console to log to make sure it is passing in what we want 
-//we then select the container in our id where we want 
-//to put the image in, and set it to a new variable
-//then we set a variable called img and created a element in the
-//index,
-//then we set that element src 'source' to dog, which is
-//the dog url we got from our first fetch function.
-//next line we simply set the size for all the pictures that are created
-//then we appended it meaning we added that img to
-//that conatiner in our html 
-//Challenge 1 complete.
+
+
+
 
 function buildDogBreeds(dog){
-    console.log(dog)
     let dogUl = document.querySelector('#dog-breeds')
     let li = document.createElement('li')
     li.textContent = dog
     dogUl.appendChild(li)
 }
-//class is always a .
-//id is always a # 
-
-//we then grab the class from the html using a query selector.
-//where we want to display our breeds
-//to grab a class we use a . 
-//this will grab the first class that exist
-//then we create a li inside that container that we grabbed.
-//we use a console.log(dog) to make sure our previous function
-//that iterated over to get breeds is Actually working
-//we then get that li we just created and add '.textContent' 
-//to add our dog breed  information to it
-//after that we append that li with the dog breed info 
-//to our class called 'dog-breeds'
-//challenge 2 complete.
-
+//here we select the un ordered list based of its id that is dog-breeds
+//we the create a li element 
+//we set the text of that li to the dog that was passed into this function
+//then we added that li to that un ordered list that we selected. 
 
 
